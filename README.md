@@ -1,0 +1,2 @@
+# MyNews
+Just For Information
