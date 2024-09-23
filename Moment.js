@@ -1,14 +1,20 @@
-const moment = require('moment');
+<div id="datetime"></div>
 
-// Get the current date and time
-const currentTime = moment();
+<script>
+  fetch('http://worldtimeapi.org/api/timezone/Asia /Kathmandu')
+    .then(response => response.json())
+    .then(data => {
+      const dateTimeString = data.datetime.split(' ')[0] + ', ' + data.day_of_week;
+      document.getElementById('datetime').innerHTML = dateTimeString;
+    });
 
-// Format the date and time string
-const dateTimeString = currentTime.format('dddd, MMMM D, YYYY h:mm:ss A');
-
-// Update the date and time every second
-setInterval(() => {
-  const currentTime = moment();
-  const dateTimeString = currentTime.format('dddd, MMMM D, YYYY h:mm:ss A');
-  document.getElementById('datetime').innerHTML = dateTimeString;
-}, 1000);
+  // Update the date and time every second
+  setInterval(() => {
+    fetch('http://worldtimeapi.org/api/timezone/Asia/Kathmandu')
+      .then(response => response.json())
+      .then(data => {
+        const dateTimeString = data.datetime.split(' ')[0] + ', ' + data.day_of_week;
+        document.getElementById('datetime').innerHTML = dateTimeString;
+      });
+  }, 1000);
+</script>
