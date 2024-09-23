@@ -35,22 +35,20 @@
                         <li class="nav-item border-right border-secondary">
                        <a class="nav-link text-body small" href="#"id="datetime"</a>
                         </li>
-			    <script>
-  function updateDateTime() {
-    fetch('http://worldtimeapi.org/api/timezone/Asia/Kathmandu')
-      .then(response => response.json())
-      .then(data => {
-        const date = data.datetime.split('T')[0];
-        const dayOfWeek = data.day_of_week;
-        const time = data.datetime.split('T')[1].split('.')[0];
-        const dateTimeString = `${dayOfWeek}, ${date} ${time}`;
-        document.getElementById('datetime').innerHTML = dateTimeString;
-      });
-  }
-
-  updateDateTime();
-  setInterval(updateDateTime, 1000);
-</script>
+			   <script>
+      function updateDateTime() {
+        fetch('http://worldtimeapi.org/api/timezone/Asia/Kathmandu')
+          .then(response => response.json())
+          .then(data => {
+            const date = data.datetime.split('T')[0];
+		const time = data.datetime.split('T')[1].split('.')[0];
+            const dateTimeString = `${date} ${time}`;
+            document.getElementById('datetime').innerHTML = dateTimeString;
+          });
+      }
+      updateDateTime();
+      setInterval(updateDateTime, 1000);
+    </script>
                         <li class="nav-item border-right border-secondary">
                             <a class="nav-link text-body small" href="#">Advertise</a>
                         </li>
